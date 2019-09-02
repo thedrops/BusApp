@@ -1,7 +1,7 @@
 {
   "name": "BusApp",
   "version": "1.0.0",
-  "description": "### Desenvolvimento Web 2 - Prof. Eduardo P de Sousa",
+  "description": "### Desenvolvimento Web 2",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/thedrops/BusApp.git"
   },
-  "author": "Pedro Henrique, Rebeca Castilho",
+  "author": "Pedro Henrique && Rebeca Castilho",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/thedrops/BusApp"
