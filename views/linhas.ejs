@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Linhas</title>
+</head>
+
+<body>
+
+    <h1>Linhas Cadastradas</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>Origem</td>
+                <td>Destino</td>
+                <td>Tarifa</td>
+                <td>Horario de Saída</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let linha of linhas){ %>
+                <tr>
+                    <td> <%= linha.origem %></td>
+                    <td> <%= linha.destino %></td>
+                    <td><%= linha.tarifa %></td>
+                    <td><%= linha.horarioSaida %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <a href="/linhas/nova">Nova Linha</a> 
+
+</body>
+
+</html>
