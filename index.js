@@ -1,5 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
+
+const linhasRouter = require ('./routes/linhas');
 
 const app = express();
 
@@ -7,6 +10,9 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/linhas', linhasRouter);
 
 app.get('/', (req, res, next) => {
   res.render('index', {
