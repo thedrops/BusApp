@@ -8,27 +8,27 @@
 </head>
 <body>
     <h1>Nova Linha</h1>
-    <form action="/linhas/nova" method="post">
+    <form action="/linhas/editar" method="post">
         <div>
             <label for='origem'>Origem</label>
-            <input  type='text' name='origem' id='origem'>
+            <input value='<%= linha.origem %>' type='text' name='origem' id='origem'>
         </div>
 
         <div>
             <label for='destino'>Destino</label>
-            <input type='text' name='destino' id='destino'>
+            <input value='<%= linha.destino %>' type='text' name='destino' id='destino'>
         </div>
         
         <div>
             <label for='tarifa'>Tarifa</label>
-            <input type='text' name='tarifa' id='tarifa'>
+            <input value='<%= linha.tarifa %>' type='text' name='tarifa' id='tarifa'>
         </div>
 
         <div>
             <label for='horarioSaida'>Horario de Saída</label>
-            <input type='text' name='horarioSaida' id='horarioSaida'>
+            <input value='<%= linha.horarioSaida %>' type='text' name='horarioSaida' id='horarioSaida'>
         </div>
-
+        <input type="hidden" name="id" value= '<%= linha.id %>'>
         <button type="submit">Salvar</button>
     </form>
     

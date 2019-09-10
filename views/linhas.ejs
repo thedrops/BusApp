@@ -18,6 +18,7 @@
                 <td>Destino</td>
                 <td>Tarifa</td>
                 <td>Horario de Saída</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,8 @@
                     <td> <%= linha.destino %></td>
                     <td><%= linha.tarifa %></td>
                     <td><%= linha.horarioSaida %></td>
+                    <td><a href="/linhas/editar/<%= linha.id %>">Editar</td>
+                    <td><a href="/linhas/deletar/<%= linha.id %>">Deletar</td>
                 </tr>
             <% } %>
         </tbody>
