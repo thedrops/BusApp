@@ -8,6 +8,8 @@ router.post('/nova', linhasController.postNovaLinha);
 
 router.get('/nova', linhasController.getNovaLinha);
 
+router.get('/editar/:idLinha', linhasController.getEditarLinha);
+
 router.get('/', linhasController.getLinhas);
   
 module.exports = router;
