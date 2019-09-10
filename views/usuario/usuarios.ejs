@@ -12,12 +12,17 @@
         <thead>
             <th>Nome</th>
             <th>Email</th>
+            <th>Ações</th>
         </thead>
         <tbody>
             <% for (let usuario of usuarios){ %>
                 <tr>
                     <td><%= usuario.nome %></td>
                     <td><%= usuario.email %></td>
+                    <td>
+                        <a href="/usuarios/deletar/<%= usuario.id %>">Deletar</a>
+                        <a href="/usuarios/editar/<%= usuario.id %>">Alterar</a>
+                    </td>
                 </tr>
             <% } %>
         </tbody>
