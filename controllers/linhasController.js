@@ -1,4 +1,4 @@
-const Linha = require('../models/linhaModel');
+const Linha = require('../app/models');
 
 exports.postNovaLinha = (req, res, next) => {
   let novaLinha = new Linha(
