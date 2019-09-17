@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+
+
 const usuarioRouter = require('./routes/usuarios');
 const linhasRouter = require ('./routes/linhas');
 
