@@ -3,6 +3,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const { Linha } = require('./app/models');
 
+
+
 const usuarioRouter = require('./routes/usuarios');
 const linhasRouter = require ('./routes/linhas');
 

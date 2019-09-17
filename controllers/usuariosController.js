@@ -1,4 +1,4 @@
-const Usuario = require('../models/usuarioModel');
+const Usuario = require('../app/models');
 
 exports.postNovoUsuario =  (req, res, next) =>{
     let novoUsuario = new Usuario(req.body.nome,req.body.email,req.body.senha)
