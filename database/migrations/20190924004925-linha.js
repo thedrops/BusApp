@@ -2,15 +2,12 @@
 var DataTypes = require('sequelize/lib/data-types');
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Linha', {
+    return queryInterface.createTable('Linhas', {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: DataTypes.UUID,
-      },
-      nome: {
-        allowNull: false,
-        type: DataTypes.STRING,
+        autoIncrement: true,
+        type: Sequelize.INTEGER.UNSIGNED
       },
       origem: {
         allowNull: false,
@@ -41,6 +38,6 @@ module.exports = {
   
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Linha');
+    return queryInterface.dropTable('Linhas');
   }
 };

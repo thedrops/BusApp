@@ -1,17 +1,12 @@
 const Linha = require('../database/index').Linha;
 
-exports.postNovaLinha = (req, res, next) => {
-  let novaLinha = new Linha(
-    req.body.origem,
-    req.body.destino,
-    req.body.tarifa,
-    req.body.horarioSaida,
-  );
-
-  novaLinha.salvar();
-  res.redirect('/linhas');
-
+exports.postNovaLinha =  (req, res, next) =>{
+  Linha.create(req.body)
+  .then((linha) => {
+    res.redirect('/linhas');
+  }).catch(console.error);
 };
+
 
 exports.getEditarLinha = (req, res, next) => {
   const id = req.params.idLinha;
@@ -27,7 +22,14 @@ exports.getEditarLinha = (req, res, next) => {
     })
 
 }
-
+exports.getExcluirLinha = (req, res, next) => {
+  let linhaId = req.params.idLinha;
+  Linha.findByPk(linhaId).then(linha => {
+    return linha.destroy();
+  }).then(() => {
+    res.redirect('/linhas');
+  }).catch(console.error);
+};
 exports.getNovaLinha = (req, res, next) => {
   res.render('novaLinha', {
     titulo: 'Nova Linha'
@@ -35,10 +37,13 @@ exports.getNovaLinha = (req, res, next) => {
 };
 
 exports.getLinhas = (req, res, next) => {
-  Linha.listar()
-    .then((linha) => {
-      res.render('linhas', {
-        linhas: linha,
-      });
+  Linha.findAll({
+    role: 'Linha'
+  })
+  .then(linhas => {
+    res.render('linhas',{
+        linhas:linhas,
     });
+  });  
+
 }
