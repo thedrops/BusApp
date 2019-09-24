@@ -1,9 +1,11 @@
-const Usuario = require('../app/models');
+const Usuario = require('../database/index').Usuario;
+
 
 exports.postNovoUsuario =  (req, res, next) =>{
-    let novoUsuario = new Usuario(req.body.nome,req.body.email,req.body.senha)
-    novoUsuario.salvar();
-    res.redirect('/usuarios');
+    Usuario.create(req.body)
+    .then((usuario) => {
+      res.redirect('/usuarios');
+    }).catch(console.error);
 };
 
 exports.postEditarUsuario =  (req, res, next) =>{
@@ -17,12 +19,16 @@ exports.getNovoUsuario = (req, res, next) =>{
 }
 
 exports.getUsuarios = (req, res, next) =>{
-    Usuario.listar()
-    .then((usuario) => {
+    
+    Usuario.findAll({
+        role: 'Usuario'
+      })
+      .then(usuarioTable => {
         res.render('usuario/usuarios',{
-            usuarios:usuario,
+            usuarios:usuarioTable,
         });
-    });
+      });  
+    
 }
 
 exports.getDeletarUsuario = (req, res, next) =>{

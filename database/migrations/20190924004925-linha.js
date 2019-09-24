@@ -1,23 +1,30 @@
-var DataTypes= require('sequelize/lib/data-types');
+'use strict';
+var DataTypes = require('sequelize/lib/data-types');
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Usuarios', {
+    return queryInterface.createTable('Linha', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
       },
       nome: {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      email: {
+      origem: {
         allowNull: false,
         type: DataTypes.STRING,
-        unique: true,
       },
-      senha: {
+      destino: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      tarifa: {
+        allowNull: false,
+        type: DataTypes.DOUBLE,
+      },
+      horarioSaida: {
         allowNull: false,
         type: DataTypes.STRING,
       },
@@ -29,12 +36,11 @@ module.exports = {
         allowNull: false,
         type: DataTypes.DATE,
       },
-      
     });
-
   },
+  
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Usuarios');
+    return queryInterface.dropTable('Linha');
   }
 };
