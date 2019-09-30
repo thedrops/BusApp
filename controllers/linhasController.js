@@ -7,10 +7,19 @@ exports.postNovaLinha =  (req, res, next) =>{
   }).catch(console.error);
 };
 
+exports.postEditarLinha =  (req, res, next) =>{
+  let linhaId = req.params.idLinha;
+  Linha.findByPk(linhaId).then(linha => {
+    linha.update(req.body).then(() => {
+      res.redirect('/linhas');
+    });
+  }).catch(console.error);
+};
+
 
 exports.getEditarLinha = (req, res, next) => {
   const id = req.params.idLinha;
-  Linha.getById(id)
+  Linha.findByPk(id)
     .then((linha) => {
       res.render('editarLinha',{
         linha:linha

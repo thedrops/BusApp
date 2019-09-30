@@ -10,6 +10,8 @@ router.post('/nova', linhasController.postNovaLinha);
 
 router.get('/nova', linhasController.getNovaLinha);
 
+router.post('/editar/:idLinha', linhasController.postEditarLinha);
+
 router.get('/editar/:idLinha', linhasController.getEditarLinha);
 
 router.get('/', linhasController.getLinhas);

@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Nova Linha</h1>
-    <form action="/linhas/editar" method="post">
+    <form action="/linhas/editar/<%= linha.id %>" method="post">
         <div>
             <label for='origem'>Origem</label>
             <input value='<%= linha.origem %>' type='text' name='origem' id='origem'>
