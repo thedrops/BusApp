@@ -31,9 +31,14 @@ exports.getUsuarios = (req, res, next) =>{
     
 }
 
-exports.getDeletarUsuario = (req, res, next) =>{
-    
-}
+exports.getExcluirUsuario = (req, res, next) => {
+    let usuarioId = req.params.usuarioId;
+    Usuario.findByPk(usuarioId).then(isso => {
+      return isso.destroy();
+    }).then(() => {
+      res.redirect('/usuarios');
+    }).catch(console.error);
+  };
 
 exports.getEditarUsuario = (req, res, next) =>{
     const id = req.params.idusuario;
