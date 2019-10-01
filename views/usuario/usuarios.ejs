@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Usuarios</title>
-</head>
+    <%- include('../includes/header.ejs') %>
 <body>
-    <h1>Usuarios</h1>
-    <table border="2">
-        <thead>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Ações</th>
-        </thead>
-        <tbody>
-            <% for (let usuario of usuarios){ %>
-                <tr>
-                    <td><%= usuario.nome %></td>
-                    <td><%= usuario.email %></td>
-                    <td>
-                        <a href="/usuarios/excluir/<%= usuario.id %>">Deletar</a>
-                        <a href="/usuarios/editar/<%= usuario.id %>">Alterar</a>
-                    </td>
-                </tr>
-            <% } %>
-        </tbody>
-    </table>
-    <a href="/usuarios/novo">Novo Usuário</a>
+    <%- include('../includes/nav.ejs') %>
+    <div class="container mt-2">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-10 "><h3 class="card-title">Usuarios</h3></div>
+                    <div class="col-sm-2"><a class="btn btn-success" href="/usuarios/novo">Novo Usuário</a></div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let usuario of usuarios){ %>
+                            <tr>
+                                <td><%= usuario.nome %></td>
+                                <td><%= usuario.email %></td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" href="/usuarios/excluir/<%= usuario.id %>">Deletar</a>
+                                    <a class="btn btn-info btn-sm" href="/usuarios/editar/<%= usuario.id %>">Alterar</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+
+
+        
+        </div>
+    </div>
+    <%- include('../includes/scripts.ejs') %>
 </body>
 </html>

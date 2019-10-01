@@ -8,14 +8,20 @@ exports.postNovoUsuario =  (req, res, next) =>{
     }).catch(console.error);
 };
 
-exports.postEditarUsuario =  (req, res, next) =>{
-    let novoUsuario = new Usuario(req.body.nome,req.body.email,req.body.senha)
-    novoUsuario.salvar();
-    res.redirect('/usuarios');
+exports.postEditarUsuario = (req, res, next) => {
+    let usuarioId = req.params.usuarioId;
+    Usuario.findByPk(usuarioId).then(usuario => {
+      usuario.update(req.body).then(() => {
+        res.redirect('/usuarios');
+      });
+    }).catch(console.error);
 };
 
 exports.getNovoUsuario = (req, res, next) =>{
-    res.render('usuario/novoUsuario');
+    res.render('usuario/formUsuario',{
+        formAction:"/usuarios/novo",
+        usuario: Usuario.build({})
+    });
 }
 
 exports.getUsuarios = (req, res, next) =>{
@@ -33,19 +39,20 @@ exports.getUsuarios = (req, res, next) =>{
 
 exports.getExcluirUsuario = (req, res, next) => {
     let usuarioId = req.params.usuarioId;
-    Usuario.findByPk(usuarioId).then(isso => {
-      return isso.destroy();
+    Usuario.findByPk(usuarioId).then(user => {
+      return user.destroy();
     }).then(() => {
       res.redirect('/usuarios');
     }).catch(console.error);
   };
 
 exports.getEditarUsuario = (req, res, next) =>{
-    const id = req.params.idusuario;
-    Usuario.getById(id)
-        .then((usuario)=>{
-            res.render('usuario/editarUsuario',{
-                usuario:usuario,
+    let usuarioId = req.params.usuarioId;
+    Usuario.findByPk(usuarioId)
+        .then((user)=>{
+            res.render('usuario/formUsuario',{
+                usuario:user,
+                formAction: '/usuarios/editar/' + usuarioId,
             });
         })
         .catch((err) =>{
