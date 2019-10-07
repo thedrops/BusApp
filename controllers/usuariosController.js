@@ -1,11 +1,20 @@
 const Usuario = require('../database/index').Usuario;
+const bcrypt = require('bcrypt');
 
+exports.postNovoUsuario =  async (req, res, next) =>{
+    const hash = bcrypt.hashSync(req.body.senha, 10);
 
-exports.postNovoUsuario =  (req, res, next) =>{
-    Usuario.create(req.body)
-    .then((usuario) => {
+    try {
+      let usuario = await Usuario.create(
+        Object.assign(req.body, { senha: hash })
+      );
+      
       res.redirect('/usuarios');
-    }).catch(console.error);
+
+    } catch(err) {
+      return res.status(400).send(err);
+    }
+
 };
 
 exports.postEditarUsuario = (req, res, next) => {
