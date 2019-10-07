@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <style>
+        body{
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+            background-color: #cccccc;
+        }
+        .page1{
+            width: 100%;
+            height: 40vh;
+        }
+        .modal{
+        max-height:100%;
+        overflow:hidden;
+        }
+
+        input[type="submit"]{
+        width: 100%;
+        margin-top: 50px;
+        }
+        .modal-close{
+        position: absolute;
+        top:10px;
+        right:10px;
+        padding:0;
+        margin:0;
+        }
+    </style>
+  </head>
+
+  <body>
+        <nav>
+            <div class="nav-wrapper black">
+                <a href="#!" class="brand-logo">BusApp</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                <li><a href="#login" class="modal-trigger">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="#login" class="modal-trigger">Login</a></li>
+        </ul>
+        <main>
+            <div class="row">
+                <div class="container">
+                    <h1 class="header center orange-text">Starter Template</h1>
+                    <div class="row center">
+                        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+                    </div>
+                    <div class="row center">
+                        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </main>
+
+        <div id="login" class="modal ">
+                <h5 class="modal-close">&#10005;</h5>
+                <div class="modal-content center">
+                  <h4>Login</h4>
+                  <form action="#">
+              
+                    <div class="input-field">
+                      <i class="material-icons prefix">person</i>
+                      <input type="text" id="name">
+                      <label for="name">Username</label>
+                    </div>
+                    <br>
+              
+                    <div class="input-field">
+                      <i class="material-icons prefix">lock</i>
+                      <input type="password" id="pass">
+                      <label for="pass">Password</label>
+                    </div>
+                    <br>
+              
+                    
+                    <input type="submit" value="Login" class="btn btn-large black">
+                    
+                  </form>
+                </div>
+              </div>
+
+        <footer class="page-footer black">
+            <div class="footer-copyright">
+                <div class="container">© Copyright BusApp</div>
+            </div>
+        </footer>
+        
+        <!--JavaScript at end of body for optimized loading-->
+        <script  src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.sidenav').sidenav();
+                $('.modal').modal();
+
+            });
+        </script>
+  </body>
+</html>

@@ -16,9 +16,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/usuarios', usuarioRouter);
 app.use('/linhas', linhasRouter);
+app.use('/linhas', linhasRouter);
 
 app.get('/', (req, res, next) => {
-  res.render('index', {
+  res.render('site/index', {
     titulo: 'Bus App'
   });
 });
