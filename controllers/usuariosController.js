@@ -29,7 +29,8 @@ exports.postEditarUsuario = (req, res, next) => {
 exports.getNovoUsuario = (req, res, next) =>{
     res.render('usuario/formUsuario',{
         formAction:"/usuarios/novo",
-        usuario: Usuario.build({})
+        usuario: Usuario.build({}),
+        title:'Novo Usuário',
     });
 }
 
@@ -62,6 +63,7 @@ exports.getEditarUsuario = (req, res, next) =>{
             res.render('usuario/formUsuario',{
                 usuario:user,
                 formAction: '/usuarios/editar/' + usuarioId,
+                title:'Editar Usuário',
             });
         })
         .catch((err) =>{

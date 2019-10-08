@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/header.ejs') %>
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <div class="container mt-2">
+        <div class="card">
+            <div class="card-body">
+            <div class="row">
+                <div class="col-sm-10 "><h3 class="card-title"><%=title%></h3></div>
+            </div>
+            <form action="<%=formAction%>" method="post">
+                <div class="form-group">
+                    <label for='origem'>Origem</label>
+                    <input  type='text' name='origem' class="form-control" id='origem'>
+                </div>
+
+                <div class="form-group">
+                    <label for='destino'>Destino</label>
+                    <input type='text' name='destino' class="form-control" id='destino'>
+                </div>
+                
+                <div class="form-group">
+                    <label for='tarifa'>Tarifa</label>
+                    <input type='text' name='tarifa' class="form-control" id='tarifa'>
+                </div>
+
+                <div class="form-group">
+                    <label for='horarioSaida'>Horario de Saída</label>
+                    <input type='text' name='horarioSaida' class="form-control" id='horarioSaida'>
+                </div>
+
+                <button class="btn btn-success float-right" type="submit">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

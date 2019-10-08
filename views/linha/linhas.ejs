@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Linhas</title>
-</head>
-
+    <%- include('../includes/header.ejs') %>
 <body>
-
-    <h1>Linhas Cadastradas</h1>
-    <table>
-        <thead>
-            <tr>
-                <td>Origem</td>
-                <td>Destino</td>
-                <td>Tarifa</td>
-                <td>Horario de Saída</td>
-                <td></td>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(let linha of linhas){ %>
-                <tr>
-                    <td> <%= linha.origem %></td>
-                    <td> <%= linha.destino %></td>
-                    <td><%= linha.tarifa %></td>
-                    <td><%= linha.horarioSaida %></td>
-                    <td><a href="/linhas/editar/<%= linha.id %>">Editar</td>
-                    <td><a href="/linhas/deletar/<%= linha.id %>">Deletar</td>
-                </tr>
-            <% } %>
-        </tbody>
-    </table>
-    <a href="/linhas/nova">Nova Linha</a> 
-
+    <%- include('../includes/nav.ejs') %>
+    <div class="container mt-2">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-10 "><h3 class="card-title">Linhas</h3></div>
+                    <div class="col-sm-2"><a class="btn btn-success" href="/linhas/nova">Nova Linha</a></div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Origem</td>
+                            <td>Destino</td>
+                            <td>Tarifa</td>
+                            <td>Horario de Saída</td>
+                            <td>Ações</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let linha of linhas){ %>
+                            <tr>
+                                <td> <%= linha.origem %></td>
+                                <td> <%= linha.destino %></td>
+                                <td><%= linha.tarifa %></td>
+                                <td><%= linha.horarioSaida %></td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" href="/linhas/excluir/<%= linha.id %>">Deletar</a>
+                                    <a class="btn btn-info btn-sm" href="/linhas/editar/<%= linha.id %>">Alterar</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+        
+        </div>
+    </div>
+    <%- include('../includes/scripts.ejs') %>
 </body>
-
 </html>
