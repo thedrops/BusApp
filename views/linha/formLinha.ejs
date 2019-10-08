@@ -12,22 +12,22 @@
             <form action="<%=formAction%>" method="post">
                 <div class="form-group">
                     <label for='origem'>Origem</label>
-                    <input  type='text' name='origem' class="form-control" id='origem'>
+                    <input  type='text' name='origem' value="<%=linha.origem%>" class="form-control" id='origem'>
                 </div>
 
                 <div class="form-group">
                     <label for='destino'>Destino</label>
-                    <input type='text' name='destino' class="form-control" id='destino'>
+                    <input type='text' name='destino' value="<%=linha.destino%>" class="form-control" id='destino'>
                 </div>
                 
                 <div class="form-group">
                     <label for='tarifa'>Tarifa</label>
-                    <input type='text' name='tarifa' class="form-control" id='tarifa'>
+                    <input type='text' name='tarifa' value="<%=linha.tarifa%>" class="form-control" id='tarifa'>
                 </div>
 
                 <div class="form-group">
                     <label for='horarioSaida'>Horario de Saída</label>
-                    <input type='text' name='horarioSaida' class="form-control" id='horarioSaida'>
+                    <input type='text' name='horarioSaida' value="<%=linha.horarioSaida%>" class="form-control" id='horarioSaida'>
                 </div>
 
                 <button class="btn btn-success float-right" type="submit">Salvar</button>

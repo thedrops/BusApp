@@ -3,7 +3,7 @@ const Linha = require('../database/index').Linha;
 exports.postNovaLinha =  (req, res, next) =>{
   Linha.create(req.body)
   .then((linha) => {
-    res.redirect('linha/formLinha');
+    res.redirect('/linhas');
   }).catch(console.error);
 };
 
@@ -11,7 +11,7 @@ exports.postEditarLinha =  (req, res, next) =>{
   let linhaId = req.params.idLinha;
   Linha.findByPk(linhaId).then(linha => {
     linha.update(req.body).then(() => {
-      res.redirect('linha/linhas');
+      res.redirect('/linhas');
     });
   }).catch(console.error);
 };
@@ -23,7 +23,7 @@ exports.getEditarLinha = (req, res, next) => {
     .then((linha) => {
       res.render('linha/formLinha',{
         linha:linha,
-        formAction: '/linha/editar/' + linha.id,
+        formAction: '/linhas/editar/' + linha.id,
         title:'Editar Linha',
       });
     })
@@ -38,12 +38,12 @@ exports.getExcluirLinha = (req, res, next) => {
   Linha.findByPk(linhaId).then(linha => {
     return linha.destroy();
   }).then(() => {
-    res.redirect('linha/linhas');
+    res.redirect('/linhas');
   }).catch(console.error);
 };
 exports.getNovaLinha = (req, res, next) => {
-  res.render('linha/novaLinha', {
-    formAction:"/linha/nova",
+  res.render('linha/formLinha', {
+    formAction:"/linhas/nova",
     linha: Linha.build({}),
     title: 'Nova Linha'
   });

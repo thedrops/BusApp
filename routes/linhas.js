@@ -4,7 +4,7 @@ const router = express.Router();
 
 const linhasController = require('../controllers/linhasController');
 
-router.get('/deletar/:idLinha', linhasController.getExcluirLinha);
+router.get('/excluir/:idLinha', linhasController.getExcluirLinha);
 
 router.post('/nova', linhasController.postNovaLinha);
 
