@@ -1,4 +1,5 @@
 'use strict';
+
 var DataTypes = require('sequelize/lib/data-types');
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -7,7 +8,7 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        type: Sequelize.INTEGER.UNSIGNED,
       },
       origem: {
         allowNull: false,
