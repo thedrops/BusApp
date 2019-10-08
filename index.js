@@ -5,6 +5,7 @@ const morgan = require('morgan');
 
 const usuarioRouter = require('./routes/usuarios');
 const linhasRouter = require ('./routes/linhas');
+const loginRouter = require ('./routes/login');
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/usuarios', usuarioRouter);
 app.use('/linhas', linhasRouter);
-app.use('/linhas', linhasRouter);
+app.use('/autenticacao', loginRouter);
 
 app.get('/', (req, res, next) => {
   res.render('site/index', {
