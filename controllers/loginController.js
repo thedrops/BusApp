@@ -1,5 +1,8 @@
 const Usuario = require('../database/index').Usuario;
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const authConfig = require("../config/auth.json");
 
 exports.postAutenticacao = async (req, res) => {
     const { email, senha } = req.body;
@@ -10,12 +13,15 @@ exports.postAutenticacao = async (req, res) => {
       );
     }
   
-    try {
-        
+    try {        
       const usuario = await Usuario.findOne({ where: { email } });
 
       if (bcrypt.compareSync(senha,usuario.senha)) {
-        return res.json(usuario);
+        const token = jwt.sign({ id : usuario.id},authConfig.secret,{
+            expiresIn: 86400,
+        });
+
+        res.send("logado!");
       }
   
     } catch (err) {
