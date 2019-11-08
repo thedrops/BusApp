@@ -9,7 +9,7 @@ exports.postNovoUsuario =  async (req, res, next) =>{
         Object.assign(req.body, { senha: hash })
       );
       
-      res.redirect('/usuarios');
+      res.redirect('http://localhost:3000/usuarios/').status(200);
 
     } catch(err) {
       return res.status(400).send(err);
@@ -40,9 +40,10 @@ exports.getUsuarios = (req, res, next) =>{
         role: 'Usuario'
       })
       .then(usuarioTable => {
-        res.render('usuario/usuarios',{
-            usuarios:usuarioTable,
-        });
+        // res.render('usuario/usuarios',{
+        //     usuarios:usuarioTable,
+        // });
+        res.json({'usuarios': usuarioTable});
       });  
     
 }

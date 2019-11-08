@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
  const bodyParser = require('body-parser');
+ const cors = require('cors')
 
 
 const usuarioRouter = require('./routes/usuarios');
@@ -9,6 +10,7 @@ const loginRouter = require ('./routes/login');
 
 const app = express();
 
+app.use(cors())
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
@@ -29,4 +31,4 @@ app.use((req, res, next) => {
   res.sendStatus(404);
 });
 
- app.listen(3000);
+ app.listen(3001);
