@@ -21,7 +21,7 @@ exports.postEditarUsuario = (req, res, next) => {
     let usuarioId = req.params.usuarioId;
     Usuario.findByPk(usuarioId).then(usuario => {
       usuario.update(req.body).then(() => {
-        res.redirect('/usuarios');
+        res.redirect('http://localhost:3000/usuarios/').status(200);
       });
     }).catch(console.error);
 };
@@ -61,11 +61,7 @@ exports.getEditarUsuario = (req, res, next) =>{
     let usuarioId = req.params.usuarioId;
     Usuario.findByPk(usuarioId)
         .then((user)=>{
-            res.render('usuario/formUsuario',{
-                usuario:user,
-                formAction: '/usuarios/editar/' + usuarioId,
-                title:'Editar Usuário',
-            });
+          res.json({'usuario' : user});
         })
         .catch((err) =>{
             console.log(err);
