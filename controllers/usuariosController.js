@@ -20,10 +20,14 @@ exports.postNovoUsuario =  async (req, res, next) =>{
 exports.postEditarUsuario = (req, res, next) => {
     let usuarioId = req.params.usuarioId;
     Usuario.findByPk(usuarioId).then(usuario => {
-      usuario.update(req.body).then(() => {
+      if((req.body.senha) != ''){
+        var hash = bcrypt.hashSync(req.body.senha, 10);
+      }
+        var hash = usuario.senha;
+      usuario.update( Object.assign(req.body, { senha: hash })).then(() => {
         res.redirect('http://localhost:3000/usuarios/').status(200);
       });
-    }).catch(console.error);
+    }).catch(res.status(400));
 };
 
 exports.getNovoUsuario = (req, res, next) =>{
@@ -53,7 +57,7 @@ exports.getExcluirUsuario = (req, res, next) => {
     Usuario.findByPk(usuarioId).then(user => {
       return user.destroy();
     }).then(() => {
-      res.redirect('/usuarios');
+      res.redirect('http://localhost:3000/usuarios/').status(200);
     }).catch(console.error);
   };
 
