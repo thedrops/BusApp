@@ -21,7 +21,7 @@ exports.postAutenticacao = async (req, res) => {
             expiresIn: 86400,
         });
 
-        res.send("logado!");
+      res.redirect('http://localhost:3000/usuarios/').status(200);
       }
   
     } catch (err) {
