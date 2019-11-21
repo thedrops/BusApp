@@ -21,10 +21,10 @@ exports.getEditarLinha = (req, res, next) => {
   const id = req.params.idLinha;
   Linha.findByPk(id)
     .then((linha) => {
-      res.render('linha/formLinha',{
-        linha:linha,
-        formAction: '/linhas/editar/' + linha.id,
-        title:'Editar Linha',
+      res.json({
+        'linha':linha,
+        'formAction' : 'http://localhost:3001/linhas/editar/' + linha.id,
+        'title' : 'Editar Linha',
       });
     })
     .catch((err) => {

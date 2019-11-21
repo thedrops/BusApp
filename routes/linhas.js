@@ -6,9 +6,9 @@ const linhasController = require('../controllers/linhasController');
 
 router.get('/excluir/:idLinha', linhasController.getExcluirLinha);
 
-router.post('/nova', linhasController.postNovaLinha);
+router.post('/novo', linhasController.postNovaLinha);
 
-router.get('/nova', linhasController.getNovaLinha);
+router.get('/novo', linhasController.getNovaLinha);
 
 router.post('/editar/:idLinha', linhasController.postEditarLinha);
 
